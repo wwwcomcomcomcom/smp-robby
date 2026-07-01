@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/content-lib/smp-robby.content-lib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/content-lib/smp-robby.content-lib.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lobby-server/smp-robby.lobby-server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lobby-server/smp-robby.lobby-server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lobby-server/smp-robby.lobby-server.test.iml" filepath="$PROJECT_DIR$/.idea/modules/lobby-server/smp-robby.lobby-server.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-content-plugin/smp-robby.sample-content-plugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-content-plugin/smp-robby.sample-content-plugin.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/velocity-plugin/smp-robby.velocity-plugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/velocity-plugin/smp-robby.velocity-plugin.main.iml" />
+    </modules>
+  </component>
+</project>

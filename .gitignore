@@ -1,0 +1,16 @@
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local secrets — never commit real credentials
+**/application.local.conf
+**/*.local.properties
+**/config.local.*
+*.db
+*.db-journal
+*.sqlite
+
+# OS / editor
+.DS_Store
+
+_workspace
