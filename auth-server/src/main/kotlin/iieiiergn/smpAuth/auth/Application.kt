@@ -27,8 +27,8 @@ import java.util.concurrent.TimeUnit
 
 private val log = LoggerFactory.getLogger("smp-auth")
 
-/** Nicknames must be 2-16 characters: Korean syllables, Latin letters, digits, `_`/`-`. */
-private val NICKNAME_PATTERN = Regex("^[A-Za-z0-9가-힣_-]{2,16}$")
+/** Nicknames must be 2-6 characters: Korean syllables, Latin letters, digits, `_`/`-`. */
+private val NICKNAME_PATTERN = Regex("^[A-Za-z0-9가-힣_-]{2,6}$")
 
 fun main() {
     val cfg = Config.load()
@@ -127,7 +127,7 @@ fun Application.module(
                 // Re-stash so the player can retry without redoing the whole OAuth round-trip.
                 val retryToken = nicknamePending.create(student)
                 call.respondText(
-                    nicknamePage(retryToken, error = "닉네임은 한글/영문/숫자/-/_ 2~16자여야 합니다."),
+                    nicknamePage(retryToken, error = "닉네임은 한글/영문/숫자/-/_ 2~6자여야 합니다."),
                     ContentType.Text.Html, HttpStatusCode.BadRequest,
                 )
                 return@post
@@ -220,7 +220,7 @@ private fun nicknamePage(token: String, error: String? = null): String {
           <form method="post" action="/nickname">
             <input type="hidden" name="token" value="${esc(token)}">
             <br>
-            <input type="text" name="nickname" minlength="2" maxlength="16" required autofocus placeholder="닉네임 (2~16자)">
+            <input type="text" name="nickname" minlength="2" maxlength="6" required autofocus placeholder="닉네임 (2~6자)">
             <br>
             <button type="submit">확인</button>
           </form>
