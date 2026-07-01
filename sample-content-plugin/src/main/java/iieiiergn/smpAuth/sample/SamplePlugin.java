@@ -34,7 +34,7 @@ public final class SamplePlugin extends JavaPlugin implements Listener {
         if (event.isLinked()) {
             StudentData s = event.getData();
             player.sendMessage(Component.text(
-                    "환영합니다, " + s.nickname() + " (" + s.grade() + "학년 " + s.classNum() + "반)!",
+                    "환영합니다, " + s.name() + " (" + s.grade() + "학년 " + s.classNum() + "반)!",
                     NamedTextColor.GREEN));
         } else {
             player.sendMessage(Component.text("DataGSM 계정이 연결되지 않았습니다.", NamedTextColor.GRAY));
@@ -57,7 +57,6 @@ public final class SamplePlugin extends JavaPlugin implements Listener {
                     return true;
                 }
                 StudentData s = data.get();
-                player.sendMessage(Component.text("닉네임: " + s.nickname(), NamedTextColor.AQUA));
                 player.sendMessage(Component.text("이름: " + s.name(), NamedTextColor.AQUA));
                 player.sendMessage(Component.text("학번: " + s.studentNumber()
                         + " (" + s.grade() + "-" + s.classNum() + "-" + s.number() + ")", NamedTextColor.AQUA));

@@ -8,7 +8,6 @@ import team.themoment.datagsm.sdk.oauth.model.UserInfo
 /** Flattens the DataGSM SDK {@code UserInfo}/{@code Student} into the framework-agnostic {@link StudentData}. */
 object StudentMapper {
 
-    /** Maps the OAuth payload. [StudentData.nickname] is not known yet — see [StudentData.withNickname]. */
     fun map(info: UserInfo): StudentData {
         val s = info.student
         return StudentData(
@@ -30,7 +29,6 @@ object StudentMapper {
             s?.githubUrl,
             club(s?.majorClub),
             club(s?.autonomousClub),
-            null,
         )
     }
 

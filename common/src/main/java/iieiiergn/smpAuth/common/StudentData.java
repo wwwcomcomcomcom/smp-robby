@@ -30,16 +30,6 @@ public record StudentData(
         String githubId,
         String githubUrl,
         ClubInfoDto majorClub,
-        ClubInfoDto autonomousClub,
-        // Local to smp-robby: chosen by the player on their first login (before the key is
-        // shown), persisted server-side, and never asked for again. Null only in the brief
-        // window between OAuth completing and the nickname form being submitted.
-        String nickname
+        ClubInfoDto autonomousClub
 ) {
-    /** Returns a copy of this snapshot with {@link #nickname} set. */
-    public StudentData withNickname(String nickname) {
-        return new StudentData(datagsmId, email, role, isStudent, name, studentNumber, grade, classNum,
-                number, sex, major, studentRole, dormitoryFloor, dormitoryRoom, githubId, githubUrl,
-                majorClub, autonomousClub, nickname);
-    }
 }

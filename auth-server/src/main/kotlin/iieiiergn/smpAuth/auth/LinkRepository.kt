@@ -27,7 +27,6 @@ class LinkRepository(dbPath: String) {
                         grade          INTEGER,
                         class_num      INTEGER,
                         student_number INTEGER,
-                        nickname       TEXT,
                         student_json   TEXT NOT NULL,
                         linked_at      INTEGER NOT NULL
                     )
@@ -43,15 +42,14 @@ class LinkRepository(dbPath: String) {
         synchronized(lock) {
             conn.prepareStatement(
                 """
-                INSERT INTO links (uuid, username, datagsm_id, grade, class_num, student_number, nickname, student_json, linked_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO links (uuid, username, datagsm_id, grade, class_num, student_number, student_json, linked_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(uuid) DO UPDATE SET
                     username = excluded.username,
                     datagsm_id = excluded.datagsm_id,
                     grade = excluded.grade,
                     class_num = excluded.class_num,
                     student_number = excluded.student_number,
-                    nickname = excluded.nickname,
                     student_json = excluded.student_json,
                     linked_at = excluded.linked_at
                 """.trimIndent()
@@ -62,9 +60,8 @@ class LinkRepository(dbPath: String) {
                 ps.setObject(4, student.grade())
                 ps.setObject(5, student.classNum())
                 ps.setObject(6, student.studentNumber())
-                ps.setString(7, student.nickname())
-                ps.setString(8, json)
-                ps.setLong(9, System.currentTimeMillis())
+                ps.setString(7, json)
+                ps.setLong(8, System.currentTimeMillis())
                 ps.executeUpdate()
             }
         }
