@@ -101,6 +101,7 @@ See `sample-content-plugin/` for a complete, working example (`/whoami`, `/senio
 | `email()` | `String` | |
 | `role()` | `String` | account role (`USER`, `ADMIN`, …) |
 | `isStudent()` | `boolean` | false for non-student accounts; student fields below are null |
+| `nickname()` | `String` | chosen by the player on their first login (before their key is shown); persisted, immutable after that |
 | `name()` | `String` | |
 | `studentNumber()` | `Integer` | |
 | `grade()` / `classNum()` / `number()` | `Integer` | 학년 / 반 / 번호 |
@@ -115,6 +116,9 @@ See `sample-content-plugin/` for a complete, working example (`/whoami`, `/senio
 
 - **Snapshot, never refreshed.** The data is captured once when the player first links
   (`/login` → `/verify`) and never auto-updates. A grade rollover won't reflect until they re-link.
+- **Nickname is set once, ever.** The auth-server asks for it right after OAuth completes (before
+  showing the key) only the very first time a DataGSM account logs in; every login after that
+  reuses the persisted value and skips the prompt.
 - **Unlinked players never reach you.** Velocity blocks transfer to any non-lobby server until
   the player links, so on a content server `SmpAuth.get` is effectively always present —
   but still guard for `Optional.empty()` defensively.

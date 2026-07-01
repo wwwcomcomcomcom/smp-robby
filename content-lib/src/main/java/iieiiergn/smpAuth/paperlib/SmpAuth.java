@@ -31,6 +31,15 @@ public final class SmpAuth {
         return CACHE.containsKey(player.getUniqueId());
     }
 
+    /**
+     * The player's chosen nickname, or empty if not linked / not yet loaded.
+     * Set once by the player on their first login and persisted server-side —
+     * shorthand for {@code get(player).map(StudentData::nickname)}.
+     */
+    public static Optional<String> getNickname(Player player) {
+        return get(player).map(StudentData::nickname);
+    }
+
     // --- internal, called by the plugin's messenger ---
 
     static void put(UUID uuid, StudentData data) {
